@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.model.MemberMapper">
+
+	<!--
+		MEMBER 테이블을 사용한 sql에 대한 실행 문장들을 정리하는 파일
+		SQL에 대한 실행 문장들을 정리하는 파일!
+	 -->
+	 
+	 <insert id="join" parameterType="com.smhrd.model.Member">
+	 	INSERT INTO show_member VALUES(
+			#{email},
+			#{pw},
+			#{phonenumber},
+			#{homeaddress}
+	 	)
+	 </insert>
+	
+	<!--
+		SELECT 구문의 경우 실행 결과값이 달라질 수 있으므로
+		실행 구문 작성시 결과 타입에 대한 데이터 지정이 필요하다.
+	 -->
+	 <select id="login" parameterType="com.smhrd.model.Member"
+	 	resultType="com.smhrd.model.Member">
+	 	SELECT * FROM show_member WHERE EMAIL=#{email} AND PW=#{pw}
+	 </select>
+</mapper>

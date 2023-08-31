@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.model.MessageMapper">
+	<insert id="insertMsg" parameterType="com.smhrd.model.Message">
+		INSERT INTO web_message VALUES(
+		nextval('num_message'),
+		#{sendName},
+		#{receiveEmail},
+		#{message},
+		NOW()
+		)
+	</insert>
+	
+	<select id="selectAll" parameterType="string"
+	 	resultType="com.smhrd.model.Message">
+	 	SELECT * FROM WEB_MESSAGE WHERE RECEIVEEMAIL=#{EMAIL}
+	 </select>
+	 
+	 <select id="deleteOne" parameterType="com.smhrd.model.Message">
+	  	DELETE FROM WEB_MESSAGE WHERE NUM=#{NUM}
+	 </select>
+	 
+	 <select id="deleteAll" parameterType="com.smhrd.model.Message">
+	  	DELETE FROM WEB_MESSAGE
+	 </select>
+</mapper>
